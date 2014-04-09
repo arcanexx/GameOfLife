@@ -1,10 +1,10 @@
 package GameOfLife;
 
 public class gameOfLifeCell {
-	public final int column;
-	public final int row;
+	private final int column;
+	private final int row;
 	private boolean alive;
-	public int liveNeighbors;
+	private int liveNeighbors;
 
 	public gameOfLifeCell(int x, int y, boolean alive) throws Exception {
 		
@@ -26,8 +26,24 @@ public class gameOfLifeCell {
 		alive = a;
 	}
 	
+	public int getColumn() {
+		return column;
+	}
+
+	public int getRow() {
+		return row;
+	}
+	
+	public int getNeighbor(){
+		return liveNeighbors;
+	}
+	
+	public void incrementNeighbor(){
+		liveNeighbors++;
+	}
+	
 	public String toString() {
-		return "Cell at (" + column + ", " + row + ") with " + liveNeighbors
-				+ " neighbor" + (liveNeighbors == 1 ? "" : "s");
+		return "Cell " + (alive == true ? "alive" : "dead") + " at (" + column + ", " + row + ") with " + liveNeighbors
+				+ " neighbor" + (liveNeighbors == 1 ? "" : "s" );
 	}
 }

@@ -7,8 +7,12 @@ public class gameOfLifeInit {
 	private static int size;
 	private static boolean[][] initShape;
 	private final int MINSIZE = 4;
+	private static int THREADPOOL;
+	private static int THREADSLEEP;
 	
-	public gameOfLifeInit(String[] Inputarray) throws Exception {
+	public gameOfLifeInit(String[] Inputarray, int tPool, int tSleep) throws Exception {
+		THREADSLEEP=tSleep;
+		THREADPOOL = tPool;
 		if ( null == Inputarray || Inputarray.length < MINSIZE ){
 			throw new Exception(
 					"Sad, small world.  Don't you want a larger game of life?  Exiting");
@@ -37,5 +41,13 @@ public class gameOfLifeInit {
 
 	public static boolean[][] getCells() {
 		return initShape;
+	}
+	
+	public static int getThreadPool() {
+		return THREADPOOL;
+	}
+	
+	public static int getThreadSleep() {
+		return THREADSLEEP;
 	}
 }

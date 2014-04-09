@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,20 +24,20 @@ public class gameOfLifeWindow extends JFrame implements ComponentListener {
 		JPanel topPanel = new JPanel();
 		topPanel.setLayout(new BoxLayout (topPanel, 0));
 		setContentPane(topPanel);
-		
 		setTitle("Game of Life Demo");
-		setSize(500, 550);
+		setSize(500, 522);
 		setBackground(new Color(0x999999));
 		setLocationRelativeTo(null);
 		this.cellGrid = gameOfLifeGrid;
-		this.cellSize = getSize().width / gameOfLifeInit.getDimension().width - 3; // to accommodate for border
+		this.cellSize = (int) Math.floor((getSize().width / (double)gameOfLifeInit.getDimension().width)-1);
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		addComponentListener(this);
+		setVisible(true);
 	}
 
 	public void componentResized(ComponentEvent e) {
-		this.cellSize = getSize().width / gameOfLifeInit.getDimension().width- 3;
+		this.cellSize =(int) Math.floor((getSize().width / (double)gameOfLifeInit.getDimension().width)-1);
 		this.repaint();
 	}
 
